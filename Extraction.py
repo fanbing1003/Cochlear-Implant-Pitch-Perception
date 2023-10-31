@@ -7,8 +7,6 @@ def FindAllFile(path):
 
 def ReadLogFile(FileName):
     log = []
-#    file = path + '/' + FileName
- #   print(file)
     with open(FileName) as file:
         lines = file.readlines()
         for line in lines:
@@ -52,8 +50,8 @@ def GetFinalTone(primary_data, secondary_data):
                     adj_freq = d['adjustable_tone'][-1]['to_freq']
                 target_list.append(target_freq)
                 adj_list.append(adj_freq)
-                #feedback.append(d['feedback']['txt_feedback'])
-        #matching_result[task_type] = [target_list, adj_list, feedback]
+            
+                #feedback.append(d['feedback']['txt_feedback'])   # If you need the text feedback, active this line
         matching_result[task_type] = [target_list, adj_list]
     return matching_result
 
@@ -76,7 +74,6 @@ def CheckCSV(data):
     #Write Summary
 
 def SaveAsCSV(matching_result, file_path, file_name):
-    #coluname = ['Task_Type', "Target_Freq", "Adj_Freq", "text_feedback"]
     coluname = ['Task_Type', "Target_Freq", "Adj_Freq"]
     df = pd.DataFrame(columns=coluname)
     for i in matching_result.keys():
@@ -91,8 +88,8 @@ def SaveAsCSV(matching_result, file_path, file_name):
 
 
 if __name__ == '__main__':
-    log_path = 'C:/Users/scott/OneDrive - Queensland University of Technology/IFN704/Data/David_Lovell'
-    save_path = 'C:/Users/scott/OneDrive - Queensland University of Technology/IFN704/Data/Final_Data'
+    log_path = 'Your log file folder'
+    save_path = 'Folder to save the extracted data'
     logs = FindAllFile(log_path)
     # Extraction
     
